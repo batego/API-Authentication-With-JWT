@@ -7,7 +7,7 @@ const authRouter = require('./Routes/Auth');
 dotenv.config();
 
 // Connect MongoDB at default port 27017.
-mongoose.connect( process.env.DB_CONNECT, { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }, (err) => {
     if (!err) {
         console.log('MongoDB Connection Succeeded.')
     } else {
@@ -22,4 +22,4 @@ app.use(express.json());
 //Routes Middleware
 app.use('/api/user', authRouter);
 
-app.listen(3000, () => console.log('Server up and Running'));
+app.listen(3001, () => console.log('Server up and Running'));
